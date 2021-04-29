@@ -3,6 +3,7 @@ body{
     font-size:1.5rem;
     color:white;
     background-color:black;
+    margin:0;padding:0;
 }
 
 .live{
@@ -22,13 +23,6 @@ color:black;
 flex-wrap: wrap;
 background-color:#abcdef;
 width:100%;
-
-}
-
-.upcomingMenu{
-    width:80%;
-    height:69%;
-    
 }
 
 .upcoming {
@@ -59,4 +53,50 @@ transition:0.3s ease-in-out;
 
 .menu2:active{
     color:black;
+}
+
+.pointsTblmenu{
+    margin-top:35px;
+}
+
+.menu3:hover{
+    color:red;
+    transition:0.3s ease-in-out;
+}
+
+.menu3:active{
+    color:black;
+}
+
+table{
+    margin-top:20px;
+    width:100%;
+    font-size:1.4rem;
+}
+
+.img{
+    width:75px;
+    border-radius: 50%;
+}
+
+
+td,th{
+    text-align:left;
+}
+
+footer{
+margin-top:60px;
+margin-bottom:0;
+background-color:white;
+color:black;
+}
+
+
+.icons i{
+    margin:30px;
+}
+
+.icons i:hover{
+    color:black;
+    transition:0.6s ease-in-out;
 }
