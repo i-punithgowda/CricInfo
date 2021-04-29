@@ -1,0 +1,61 @@
+body{
+    font-family: 'EB Garamond', serif;
+    font-size:1.5rem;
+    color:white;
+    background-color:black;
+}
+
+.live{
+    margin-bottom: 30px;
+}
+.completedMenu{
+    margin-bottom:30px;
+  
+}
+.completed {
+    display: none;
+flex-direction: column;
+}
+
+.completed .match{
+    margin-right: 5px;
+flex-wrap: wrap;
+background-color:#abcdef;
+width:100%;
+
+}
+
+.upcomingMenu{
+    width:80%;
+    height:69%;
+}
+
+.upcoming {
+    display:none;
+    flex-wrap: wrap;
+    
+}
+
+.upcoming .upcomingMatchName{
+margin:5px;
+background-color:#abcdef;
+width:60%;
+}
+
+.menu1:hover{
+color:red;
+transition:0.3s ease-in-out;
+}
+
+.menu2:hover{
+    color:red;
+    transition:0.3s ease-in-out;
+}
+
+.menu1:active{
+    color:black;
+}
+
+.menu2:active{
+    color:black;
+}
