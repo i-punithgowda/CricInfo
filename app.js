@@ -21,26 +21,53 @@ getMatches();
 const getData = (data) => {
     let jsonData = JSON.parse(data);
     let matches = jsonData.matchList.matches;
-    console.log(matches)
     for (var i = 0; i < matches.length; i++) {
                if (matches[i].status == "LIVE" && matches[i].series.id === 2780) {
             builthtmlLive(matches[i])
         } else if (matches[i].status == "COMPLETED" && matches[i].series.id === 2780) {
             buildHtmlHighlights(matches[i])
-        }else if(matches[i].status == "UPCOMING" && matches[i].series.id===2780){
-buildHtmlUpcoming(matches[i]);   
-     }
+        }else if((matches[i].status == "UPCOMING" && matches[i].series.id===2780) && (matches[i].matchSummaryText!=0) ){
+    buildtosshtml(matches[i]);
+}else if(matches[i].status == "UPCOMING" && matches[i].series.id===2780){
+    buildHtmlUpcoming(matches[i]);   
+         }
+     
+     
 
     }
 }
 
 const builthtmlLive = (data) => {
-    if(data==undefined){
-     document.querySelector('.live').innerHTML="No IPL matches are being played currently, check our upcoming matches section "
+    let liveHtml="";
+    let awayTeamBatting="";
+    let homeTeamBatting="";
+    if(data.awayTeam.isBatting){
+        awayTeamBatting=true
+    }else{
+        homeTeamBatting=true;
     }
-   
+
+    if(awayTeamBatting){
+        liveHtml=
+        `
+        <div class="team">${data.awayTeam.shortName}&nbsp;<span>${data.scores.awayScore}(${data.scores.awayOvers})</span>
+        <div>${data.homeTeam.shortName}</div>
+        `
+    }else{
+        liveHtml=`
+        <div class="team">${data.homeTeam.shortName}&nbsp;<span>${data.scores.homeScore}(${data.scores.homeOvers})</span>
+        <div>${data.awayTeam.shortName}</div>
+        `
+    }
+console.log(data);
+   if(data==undefined){
+       document.querySelector('.live').innerHTML="No IPL matches are being played right now, <br> check upcoming matches section"
+   }else{
+       document.querySelector('.live').innerHTML=liveHtml;
+   }
 }
-builthtmlLive();
+
+
 
 const buildHtmlHighlights = (data) => {
     let html=`<br>
@@ -61,7 +88,6 @@ ${data.homeTeam.shortName}:- ${data.scores.homeScore}(${data.scores.homeOvers})<
 }
 
 function buildHtmlUpcoming(data){
-console.log(data);
 const startdateTime=new Date(data.startDateTime);
 const hours=startdateTime.getHours();
 const minutes=startdateTime.getMinutes();
@@ -154,3 +180,14 @@ menu2.addEventListener('click',e=>{
 menu2count=0;
     }
 })
+
+
+function buildtosshtml(data){
+    html=`
+    <div class="teams">
+   ${data.awayTeam.shortName} VS ${data.homeTeam.shortName}
+   <div class="toss">${data.matchSummaryText}</div> 
+    </div>
+    `
+document.querySelector('.live').innerHTML=html;
+}
