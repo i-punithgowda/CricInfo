@@ -10,11 +10,11 @@ body{
 }
 .completedMenu{
     margin-bottom:30px;
-  
 }
 .completed {
     display: none;
 flex-direction: column;
+color:black;
 }
 
 .completed .match{
@@ -28,12 +28,13 @@ width:100%;
 .upcomingMenu{
     width:80%;
     height:69%;
+    
 }
 
 .upcoming {
     display:none;
     flex-wrap: wrap;
-    
+    color:black;
 }
 
 .upcoming .upcomingMatchName{
