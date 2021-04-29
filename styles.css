@@ -73,7 +73,9 @@ table{
     width:100%;
     font-size:1.4rem;
 }
-
+.ptsTbl{
+    display:none;
+}
 .img{
     width:75px;
     border-radius: 50%;
@@ -84,11 +86,19 @@ td,th{
     text-align:left;
 }
 
+.footer{
+    position: relative;
+  top:15%;
+width:100%;    
+text-align:center;
+}
+
 footer{
 margin-top:60px;
 margin-bottom:0;
 background-color:white;
 color:black;
+
 }
 
 
@@ -98,5 +108,4 @@ color:black;
 
 .icons i:hover{
     color:black;
-    transition:0.6s ease-in-out;
 }
