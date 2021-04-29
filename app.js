@@ -17,7 +17,9 @@ const getMatches = () => {
     xhr.send(data);
 }
 
-getMatches();
+addEventListener('load',e=>{
+    getMatches();
+})
 const getData = (data) => {
     let jsonData = JSON.parse(data);
     let matches = jsonData.matchList.matches;
@@ -43,7 +45,7 @@ const builthtmlLive = (data) => {
     let homeTeamBatting="";
     if(data.awayTeam.isBatting){
         awayTeamBatting=true
-    }else{
+    }else if(data.homeTeam.isBatting){
         homeTeamBatting=true;
     }
 
@@ -52,8 +54,9 @@ const builthtmlLive = (data) => {
         `
         <div class="team">${data.awayTeam.shortName}&nbsp;<span>${data.scores.awayScore}(${data.scores.awayOvers})</span>
         <div>${data.homeTeam.shortName}</div>
+        <div class="status">${data.matchSummaryText}</div>
         `
-    }else{
+    }else if(homeTeamBatting){
         liveHtml=`
         <div class="team">${data.homeTeam.shortName}&nbsp;<span>${data.scores.homeScore}(${data.scores.homeOvers})</span>
         <div>${data.awayTeam.shortName}</div>
@@ -191,3 +194,23 @@ function buildtosshtml(data){
     `
 document.querySelector('.live').innerHTML=html;
 }
+
+
+
+
+const data = null;
+
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+            getData(this.responseText)
+        }
+    });
+
+    xhr.open("GET", "https://dev132-cricket-live-scores-v1.p.rapidapi.com/matches.php?upcomingLimit=30&inprogresslimit=5&completedlimit=50");
+    xhr.setRequestHeader("x-rapidapi-key", "49835d9c44msh21d22218a4ce348p184696jsnb30ba800d849");
+    xhr.setRequestHeader("x-rapidapi-host", "dev132-cricket-live-scores-v1.p.rapidapi.com");
+
+    xhr.send(data);
