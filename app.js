@@ -23,6 +23,7 @@ addEventListener('load',e=>{
 })
 const getData = (data) => {
     let jsonData = JSON.parse(data);
+    console.log(jsonData);
     let matches = jsonData.matchList.matches;
     for (var i = 0; i < matches.length; i++) {
                if (matches[i].status == "LIVE" && matches[i].series.id === 2780) {
@@ -64,7 +65,6 @@ const builthtmlLive = (data) => {
         <div>${data.awayTeam.shortName}</div>
         `
     }
-console.log(data);
    if(data==undefined){
        document.querySelector('.live').innerHTML="No IPL matches are being played right now, <br> check upcoming matches section"
    }else{
@@ -154,12 +154,12 @@ const pointsTable = () => {
 function buildhtmlPtsTable(ptsData) {
     const data=JSON.parse(ptsData);
     teamData=data.teams;
-   console.log(teamData)
+    console.log(teamData)
    let html=` <tr class="table">
     <th>Team</th>
     <th>Played</th>
 <th>Won</th>
-<th>Loss</th>
+<th>Points</th>
 <th>Nrr</th>
 <th>Logo</th>
 </tr>
@@ -168,7 +168,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[0].shortName}</td>
 <td>${teamData[0].played}</td>
 <td>${teamData[0].won}</td>
-<td>${teamData[0].lost}</td>
+<td>${teamData[0].points}</td>
 <td>${teamData[0].netRunRate}</td>
 <td><img class="img" src=${teamData[0].logoUrl} alt=""></td>
 </tr>
@@ -176,7 +176,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[1].shortName}</td>
 <td>${teamData[1].played}</td>
 <td>${teamData[1].won}</td>
-<td>${teamData[1].lost}</td>
+<td>${teamData[1].points}</td>
 <td>${teamData[1].netRunRate}</td>
 <td><img class="img" src=${teamData[1].logoUrl} alt=""></td>
 </tr>
@@ -184,7 +184,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[2].shortName}</td>
 <td>${teamData[2].played}</td>
 <td>${teamData[2].won}</td>
-<td>${teamData[2].lost}</td>
+<td>${teamData[2].points}</td>
 <td>${teamData[2].netRunRate}</td>
 <td><img class="img" src=${teamData[2].logoUrl} alt=""></td>
 </tr>
@@ -192,7 +192,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[3].shortName}</td>
 <td>${teamData[3].played}</td>
 <td>${teamData[3].won}</td>
-<td>${teamData[3].lost}</td>
+<td>${teamData[3].points}</td>
 <td>${teamData[3].netRunRate}</td>
 <td><img class="img" src=${teamData[3].logoUrl} alt=""></td>
 </tr>
@@ -200,7 +200,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[4].shortName}</td>
 <td>${teamData[4].played}</td>
 <td>${teamData[4].won}</td>
-<td>${teamData[4].lost}</td>
+<td>${teamData[4].points}</td>
 <td>${teamData[4].netRunRate}</td>
 <td><img class="img" src=${teamData[4].logoUrl} alt=""></td>
 </tr>
@@ -208,7 +208,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[5].shortName}</td>
 <td>${teamData[5].played}</td>
 <td>${teamData[5].won}</td>
-<td>${teamData[5].lost}</td>
+<td>${teamData[5].points}</td>
 <td>${teamData[5].netRunRate}</td>
 <td><img class="img" src=${teamData[5].logoUrl} alt=""></td>
 </tr>
@@ -216,7 +216,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[6].shortName}</td>
 <td>${teamData[6].played}</td>
 <td>${teamData[6].won}</td>
-<td>${teamData[6].lost}</td>
+<td>${teamData[6].points}</td>
 <td>${teamData[6].netRunRate}</td>
 <td><img class="img" src=${teamData[6].logoUrl} alt=""></td>
 </tr>
@@ -225,7 +225,7 @@ function buildhtmlPtsTable(ptsData) {
 <td>${teamData[7].shortName}</td>
 <td>${teamData[7].played}</td>
 <td>${teamData[7].won}</td>
-<td>${teamData[7].lost}</td>
+<td>${teamData[7].points}</td>
 <td>${teamData[7].netRunRate}</td>
 <td><img class="img" src=${teamData[7].logoUrl} alt=""></td>
 </tr>
